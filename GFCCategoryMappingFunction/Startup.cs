@@ -33,8 +33,10 @@ namespace GFCCategoryMappingFunction
                 .Build();
 
             var applicationSettings = configuration.GetSection("ApplicationSettings").Get<ApplicationSettings>();
+            var securitySettings = configuration.GetSection("SecuritySettings").Get<SecuritySettings>();
 
             services.TryAddSingleton<IApplicationSettings>(applicationSettings);
+            services.TryAddSingleton<ISecuritySettings>(securitySettings);
 
             services.TryAddSingleton<IDocumentClient>(
                 new DocumentClient(
@@ -42,7 +44,7 @@ namespace GFCCategoryMappingFunction
                     applicationSettings.AuthorizationKey));
 
             services.TryAddScoped(typeof(ICategoryMappingsService), typeof(CategoryMappingsService));
-
+            services.TryAddScoped(typeof(ISecuritySettingsService), typeof(SecuritySettingsService));
         }
     }
 }
