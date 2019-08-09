@@ -22,11 +22,10 @@ namespace GFCCategoryMappingFunction
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
             ILogger log,
-            [Inject]ICategoryMappingsService mappingSvc,
-            [Inject] ISecuritySettingsService securitySvc)
+            [Inject] ICategoryMappingsService mappingSvc)
         {
             //Let's get our public key
-            var publicApiKey = securitySvc.GetPublicKey();
+            var publicApiKey = "490f1224-1a44-4243-9e0e-5e78e5463517-8eba491a-7472-44fe-8bc2-eb64d81ccf1e";
 
             //Check the key against what we have stored and reject the call if not using the correct key
             if (req.Headers.TryGetValue("publicKey", out var headerValues))

@@ -16,10 +16,10 @@ namespace GFCCategoryMappingFunction.Services
         private readonly string _collectionId;
         private readonly IDocumentClient _client;
 
-        public CategoryMappingsService(IDocumentClient client, IApplicationSettings settings)
+        public CategoryMappingsService(IDocumentClient client)
         {
-            _databaseId = settings.DatabaseId;
-            _collectionId = settings.CollectionId;
+            _databaseId = "CQCData";
+            _collectionId = "CategoryMappings";
             _client = client;
         }
 
