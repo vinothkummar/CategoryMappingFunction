@@ -20,7 +20,7 @@ namespace GFCCategoryMappingFunction
     {
         [FunctionName("CategoryMapper")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
             ILogger log,
             [Inject] ICategoryMappingsService mappingSvc)
         {
